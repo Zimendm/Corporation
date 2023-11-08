@@ -88,7 +88,11 @@ namespace Corporation
                          {
                              txtContentServices.Text = Regex.Match(str, @"-*\d*\.\d\d").Value.ToString();
                          }
-                         if (Regex.IsMatch(str, @"ПОСЛУГИ МІЖНАРОДНОГО РОУМІНГУ:"))
+                        if (str.IndexOf(@"СПЕЦІАЛЬНІ ПОСЛУГИ ФІКСОВАНОГО")>-1)
+                        {
+                            txtFix.Text = Regex.Match(str, @"-*\d*\.\d\d").Value.ToString();
+                        }
+                        if (Regex.IsMatch(str, @"ПОСЛУГИ МІЖНАРОДНОГО РОУМІНГУ:"))
                          {
                              txtRoamingServices.Text = Regex.Match(str, @"-*\d*\.\d\d").Value.ToString();
                          }
@@ -136,7 +140,8 @@ namespace Corporation
                      if (txtContentServices.Text != "") AllAmmount += Convert.ToDecimal(txtContentServices.Text, provider);
                      if (txtRoamingServices.Text != "") AllAmmount += Convert.ToDecimal(txtRoamingServices.Text, provider);
                      if (txtSpacialServices.Text != "") AllAmmount += Convert.ToDecimal(txtSpacialServices.Text, provider);
-                     if (txtDiscount.Text!="")  AllAmmount +=Convert.ToDecimal(txtDiscount.Text,provider);
+                    if (txtFix.Text != "") AllAmmount += Convert.ToDecimal(txtFix.Text, provider);
+                    if (txtDiscount.Text!="")  AllAmmount +=Convert.ToDecimal(txtDiscount.Text,provider);
 
                      //Доп. скидка при миграции
                      if (txtAddDiscount.Text != "") AllAmmount += Convert.ToDecimal(txtAddDiscount.Text, provider);
